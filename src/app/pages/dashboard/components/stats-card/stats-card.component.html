@@ -1,0 +1,12 @@
+<div class="stats panel">
+  <div class="row">
+    <span class="icon pill">
+      <mat-icon *ngIf="materialIcon; else textIcon" fontIcon="{{ icon }}" class="material-icons-outlined"></mat-icon>
+      <ng-template #textIcon>{{ icon }}</ng-template>
+    </span>
+    <span class="title">{{ title }}</span>
+    <span class="dots"><mat-icon fontIcon="more_vert" class="material-icons-outlined"></mat-icon></span>
+  </div>
+  <div class="value">{{ value }}</div>
+  <div class="change pill" [class.up]="isUp" [class.down]="!isUp">{{ change }}</div>
+  </div>

@@ -1,0 +1,48 @@
+<app-topbar title="Settings"></app-topbar>
+
+<section class="container">
+  <div class="panel box">
+    <h2>Appearance</h2>
+    <p class="muted">Theme is set to {{ theme | titlecase }} for better visibility.</p>
+    <button class="pill toggle" (click)="toggleTheme()">{{ theme === 'dark' ? 'Switch to Light' : 'Switch to Dark' }}</button>
+  </div>
+
+  <div class="panel box">
+    <h2>Account</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="title">Profile</div>
+        <label><span>Name</span><input [(ngModel)]="profile.name" type="text" /></label>
+        <label><span>Email</span><input [(ngModel)]="profile.email" type="email" /></label>
+        <label><span>Phone</span><input [(ngModel)]="profile.phone" type="tel" /></label>
+        <label><span>Title</span><input [(ngModel)]="profile.title" type="text" /></label>
+        <div class="actions">
+          <button class="pill" (click)="saveProfile()" [disabled]="savingProfile">Save</button>
+          <span class="muted">{{ saveMessage }}</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">Change Password</div>
+        <label><span>Current</span><input [(ngModel)]="pwd.current" type="password" /></label>
+        <label><span>New</span><input [(ngModel)]="pwd.next" type="password" placeholder="Min 8 chars, include numbers" /></label>
+        <label><span>Confirm</span><input [(ngModel)]="pwd.confirm" type="password" /></label>
+        <div class="actions">
+          <button class="pill" (click)="changePassword()">Update</button>
+          <span class="muted">{{ pwdMessage }}</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">Active Sessions</div>
+        <div class="sessions">
+          <div class="row" *ngFor="let s of sessions">
+            <div class="info">
+              <div class="name">{{ s.device }}</div>
+              <div class="muted small">{{ s.location }} • {{ s.lastActive }}</div>
+            </div>
+            <button class="pill" (click)="revokeSession(s.id)">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

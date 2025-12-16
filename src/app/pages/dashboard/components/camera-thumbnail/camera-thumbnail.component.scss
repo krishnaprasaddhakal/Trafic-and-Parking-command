@@ -1,0 +1,15 @@
+.thumb { padding: 14px; box-shadow: var(--shadow-soft); }
+.thumb .hdr { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 10px; }
+.thumb .loc { background: var(--panel-2); }
+.img-wrap { position: relative; overflow: hidden; border-radius: var(--radius); }
+.img-wrap img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,26,42,0) 60%, rgba(20,26,42,.6) 100%);
+}
+.badge { position: absolute; top: 12px; right: 12px; padding: 6px 10px; border-radius: 999px; background: var(--panel-2); border: 1px solid var(--border); font-size: 12px; }
+.badge.rec { color: #fff; background: #dc2626; border-color: #dc2626; }
+.ts { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,.15); color: #e5e7eb; }
+.label { position: absolute; top: 12px; left: 12px; }

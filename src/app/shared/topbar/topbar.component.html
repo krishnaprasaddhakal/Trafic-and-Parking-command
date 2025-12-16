@@ -1,0 +1,24 @@
+<header class="topbar">
+  <button class="menu" (click)="toggleMenu()">☰</button>
+  <h1>{{ title }}</h1>
+  <div class="spacer"></div>
+  <button class="pill theme" (click)="toggleTheme()">
+    <mat-icon fontIcon="brightness_6" class="material-icons-outlined"></mat-icon>
+    <span>{{ theme === 'dark' ? 'Light' : 'Dark' }}</span>
+  </button>
+  <button class="account pill" [matMenuTriggerFor]="accountMenu">
+    <img src="https://avatar.vercel.sh/user" alt="avatar" />
+    <span>John Carter</span>
+    <mat-icon fontIcon="expand_more" class="material-icons-outlined"></mat-icon>
+  </button>
+  <mat-menu #accountMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon fontIcon="manage_accounts" class="material-icons-outlined"></mat-icon>
+      <span>Account Settings</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon fontIcon="logout" class="material-icons-outlined"></mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</header>

@@ -1,0 +1,30 @@
+<div class="table panel">
+  <ag-grid-angular
+    class="ag-theme-alpine grid"
+    [rowData]="items"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [context]="{ component: this }"
+    [domLayout]="'autoHeight'"
+    [rowHeight]="64"
+    [headerHeight]="48"
+    [pagination]="true"
+    [paginationPageSize]="pageSize"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+  <div class="pager">
+    <div class="left">
+      <span>Page Size:</span>
+      <select [ngModel]="pageSize" (ngModelChange)="onPageSizeChange($event)">
+        <option [value]="5">5</option>
+        <option [value]="10">10</option>
+        <option [value]="25">25</option>
+      </select>
+    </div>
+    <div class="center">{{ pagerText() }}</div>
+    <div class="right">
+      <button class="pill" (click)="gridApi?.paginationGoToPreviousPage()">‹</button>
+      <button class="pill" (click)="gridApi?.paginationGoToNextPage()">›</button>
+    </div>
+  </div>
+</div>

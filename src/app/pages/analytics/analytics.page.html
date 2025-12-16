@@ -1,0 +1,46 @@
+<app-topbar title="Analytics"></app-topbar>
+
+<section class="container analytics">
+  <div class="subtitle">High-level metrics to support policy and infrastructure planning</div>
+
+  <div class="grid grid-3 kpis">
+    <app-stats-card *ngFor="let c of kpis" [icon]="c.icon" [materialIcon]="true" [title]="c.label" [value]="c.value" [change]="c.change"></app-stats-card>
+  </div>
+
+  <div class="grid mt">
+    <div class="panel chart left">
+      <div class="hdr">
+        <div>
+          <div class="title">Hourly Occupancy (%)</div>
+          <div class="sub"> </div>
+        </div>
+        <button class="pill export" (click)="exportData()">Export ↓</button>
+      </div>
+      <div class="donut">
+        <div class="donut-wrap">
+          <canvas baseChart [type]="'doughnut'" [data]="donutData" [options]="donutOptions"></canvas>
+          <div class="donut-center">
+            <div class="big">{{ donutTotal }}</div>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="row"><span class="dot" style="background:#8b5cf6"></span> Morning <span class="pct">30%</span></div>
+          <div class="row"><span class="dot" style="background:#38bdf8"></span> Afternoon <span class="pct">50%</span></div>
+          <div class="row"><span class="dot" style="background:#1ea1ff"></span> Night <span class="pct">20%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel chart right">
+      <div class="hdr">
+        <div>
+          <div class="title">Monthly Violations</div>
+        </div>
+        <div class="controls">
+          <app-date-range [start]="range.start" [end]="range.end" (change)="onDateRangeChange($event)"></app-date-range>
+          <button class="pill toggle" (click)="toggleStacking()">{{ stacked ? 'Stacked' : 'Grouped' }}</button>
+        </div>
+      </div>
+      <canvas baseChart [type]="'bar'" [data]="barData" [options]="barOptions"></canvas>
+    </div>
+  </div>
+</section>

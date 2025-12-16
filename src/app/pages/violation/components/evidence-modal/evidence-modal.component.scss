@@ -1,0 +1,5 @@
+.overlay { position: fixed; inset: 0; display: grid; place-items: center; z-index: 50; }
+.backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
+.modal { position: relative; padding: 16px; width: 720px; max-width: 90vw; box-shadow: var(--shadow-hard); z-index: 51; }
+.modal img { width: 100%; height: auto; border-radius: 10px; display: block; }
+.close { margin-top: 12px; float: right; }

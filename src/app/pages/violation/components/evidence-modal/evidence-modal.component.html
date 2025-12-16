@@ -1,0 +1,7 @@
+<div class="overlay" *ngIf="open" (click)="close.emit()">
+  <div class="modal panel" (click)="$event.stopPropagation()">
+    <img [src]="src" alt="evidence" />
+    <button class="close pill" (click)="close.emit()">Close</button>
+  </div>
+  <div class="backdrop"></div>
+</div>

@@ -1,0 +1,25 @@
+.stats { padding: 18px; box-shadow: var(--shadow-hard); }
+.stats .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+}
+.stats .icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(40px 40px at 50% 50%, rgba(139,92,246,.18), transparent),
+    linear-gradient(0deg, var(--panel-2), var(--panel-2));
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+.stats .title { font-weight: 600; }
+.stats .dots { margin-left: auto; color: var(--muted); }
+.stats .value { font-size: 30px; font-weight: 800; margin-top: 8px; letter-spacing: .2px; }
+.stats .change { margin-top: 10px; border-color: transparent; }
+.stats .change.up { color: #22c55e; background: rgba(34,197,94,.15); }
+.stats .change.down { color: #ef4444; background: rgba(239,68,68,.15); }

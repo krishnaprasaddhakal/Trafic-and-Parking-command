@@ -1,0 +1,18 @@
+<div class="filter panel">
+  <button class="toggle" (click)="toggleView()">{{ view === 'grid' ? '▦' : '≡' }}</button>
+  <div class="select">
+    <span class="pill">Filter</span>
+    <select [(ngModel)]="filter" (ngModelChange)="filterChange.emit($event)">
+      <option>All</option>
+      <option>Active</option>
+      <option>Inactive</option>
+      <option>Maintenance</option>
+      <option>Violation</option>
+    </select>
+  </div>
+  <input [(ngModel)]="search" (ngModelChange)="searchChange.emit($event)" type="text" [placeholder]="'e.g. camera code'"/>
+  <div class="summary">
+    <span class="pill">Filter: {{ filterCount }}</span>
+    <a href="#" (click)="$event.preventDefault(); clearAll.emit()">Clear all</a>
+  </div>
+</div>

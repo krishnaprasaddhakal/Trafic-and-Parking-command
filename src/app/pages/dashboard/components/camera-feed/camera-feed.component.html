@@ -1,0 +1,17 @@
+<div class="feed panel">
+  <div class="hdr">
+    <div class="left">Camera: {{ camera.id }}</div>
+    <div class="right">
+      <select (change)="onSelect($any($event.target).value)">
+        <option [value]="camera.id">{{ camera.location }}</option>
+        <option *ngFor="let c of options" [value]="c.id">{{ c.location }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="img-wrap">
+    <img [src]="camera.image" alt="camera" />
+    <div class="badge" [class.rec]="camera.status==='Rec' || camera.status==='Recording'">{{ camera.status }}</div>
+    <div class="ts pill">{{ camera.timestamp }}</div>
+    <div class="label pill">{{ camera.id }}</div>
+  </div>
+</div>

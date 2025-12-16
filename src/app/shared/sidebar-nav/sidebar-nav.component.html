@@ -1,0 +1,18 @@
+<aside class="sidebar panel" [class.show]="!sidebar.collapsed()">
+  <div class="brand">
+    <img class="brand-logo" src="/NGN.png" alt="NGN logo" />
+  </div>
+
+  <div class="search">
+    <input [(ngModel)]="query" (keyup.enter)="submitSearch()" type="text" placeholder="Search for..." />
+  </div>
+
+  <nav [class.collapsed]="sidebar.collapsed()">
+    <a routerLink="/dashboard" routerLinkActive="active"><span class="dot"></span><span class="material-icons-outlined">dashboard</span>Dashboard</a>
+    <a routerLink="/cameras" routerLinkActive="active"><span class="dot"></span><span class="material-icons-outlined">videocam</span>Cameras</a>
+    <a routerLink="/violation" routerLinkActive="active"><span class="dot"></span><span class="material-icons-outlined">report</span>Violation</a>
+    <a routerLink="/analytics" routerLinkActive="active"><span class="dot"></span><span class="material-icons-outlined">analytics</span>Analytics</a>
+    <a routerLink="/polygon" routerLinkActive="active"><span class="dot"></span><span class="material-icons-outlined">map</span>Polygon Editor</a>
+    <a routerLink="/settings" routerLinkActive="active"><span class="dot"></span><span class="material-icons-outlined">settings</span>Settings</a>
+  </nav>
+</aside>

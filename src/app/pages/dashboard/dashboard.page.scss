@@ -1,0 +1,17 @@
+.dashboard {
+  background: radial-gradient(800px 500px at 60% -80%, rgba(139,92,246,.08), transparent),
+              radial-gradient(600px 400px at 10% -80%, rgba(56,189,248,.08), transparent);
+  border-radius: var(--radius);
+  padding-bottom: 40px;
+}
+.mt { margin-top: 24px; }
+.subtitle { color: var(--muted); margin-bottom: 12px; }
+.col-span-2 { grid-column: span 2; }
+.footer {
+  margin-top: 24px;
+  color: var(--muted);
+  text-align: center;
+}
+@media (max-width: 960px) {
+  .col-span-2 { grid-column: span 1; }
+}

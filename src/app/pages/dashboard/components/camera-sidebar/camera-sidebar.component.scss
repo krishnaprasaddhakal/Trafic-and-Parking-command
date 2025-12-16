@@ -1,0 +1,8 @@
+.sidebar { padding: 18px; box-shadow: var(--shadow-hard); }
+.hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.hdr .view { background: var(--panel-2); }
+.list { display: flex; flex-direction: column; gap: 10px; }
+.row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--panel-2); box-shadow: var(--shadow-soft); }
+.row .name { font-weight: 600; }
+.row .desc { color: var(--muted); font-size: 12px; }
+.row .status { color: #22c55e; border: 1px solid #22c55e; }

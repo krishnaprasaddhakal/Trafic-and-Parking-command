@@ -1,0 +1,67 @@
+<app-topbar [title]="headerTitle"></app-topbar>
+
+<section class="container violation">
+  <div class="subtitle">{{ headerSubtitle }}</div>
+
+  <app-violation-filter-bar
+    [view]="view" [search]="search" [filterCount]="filterCount" [month]="month"
+    [startDate]="startDate" [endDate]="endDate"
+    (viewChange)="onViewChange($event)" (searchChange)="onSearchChange($event)" (clearAll)="onClearAll()"
+    (monthChange)="onMonthChange($event)" (dateRangeChange)="onDateRangeChange($event)"/>
+
+  <app-violation-tabs [tabs]="tabs" [active]="typeFilter" (change)="onTypeChange($event)"></app-violation-tabs>
+
+  <div class="section panel">
+    <div class="hdr">
+      <div>
+        <div class="title">{{ sectionTitle }}</div>
+        <div class="sub">{{ sectionSubtitle }}</div>
+      </div>
+    </div>
+    <ng-container *ngIf="view==='grid'; else listView">
+      <app-violation-table [items]="filtered" (evidenceClick)="onEvidenceClick($event)"></app-violation-table>
+    </ng-container>
+    <ng-template #listView>
+      <div class="table-wrap">
+      <table class="table fixed">
+        <colgroup>
+          <col style="width: 200px" />
+          <col style="width: 160px" />
+          <col style="width: 160px" />
+          <col style="width: 120px" />
+          <col style="width: 180px" />
+          <col style="width: 140px" />
+          <col style="width: 160px" />
+        </colgroup>
+        <thead>
+          <tr class="row">
+            <th>Date & Time <mat-icon fontIcon="filter_list" class="material-icons-outlined"></mat-icon></th>
+            <th>Camera Name <mat-icon fontIcon="filter_list" class="material-icons-outlined"></mat-icon></th>
+            <th>Type <mat-icon fontIcon="filter_list" class="material-icons-outlined"></mat-icon></th>
+            <th>Plate Number <mat-icon fontIcon="filter_list" class="material-icons-outlined"></mat-icon></th>
+            <th>Vehicle Type <mat-icon fontIcon="filter_list" class="material-icons-outlined"></mat-icon></th>
+            <th>Duration / Rate <mat-icon fontIcon="filter_list" class="material-icons-outlined"></mat-icon></th>
+            <th>Evidence</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="pager">
+        <div class="left">
+          <span>Page Size:</span>
+          <select [ngModel]="listPageSize" (ngModelChange)="onPageSizeChange($event)">
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="25">25</option>
+          </select>
+        </div>
+        <div class="center">{{ pageStartText() }} to {{ pageEndText() }} of {{ total }}</div>
+        <div class="right">
+          <button class="pill" (click)="prevPage()">‹</button>
+          <button class="pill" (click)="nextPage()">›</button>
+        </div>
+      </div>
+      </div>
+    </ng-template>
+  </div>
+  <app-evidence-modal [src]="previewSrc" [open]="previewOpen" (close)="onClosePreview()"></app-evidence-modal>
+</section>

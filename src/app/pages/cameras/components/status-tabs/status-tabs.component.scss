@@ -1,0 +1,4 @@
+.tabs { display: flex; align-items: center; gap: 18px; padding: 0 4px; }
+.tab { color: var(--muted); text-decoration: none; padding: 10px 0; border-bottom: 2px solid transparent; }
+.tab.active { color: var(--text); border-bottom-color: #4f5d78; }
+.tab .pill { margin-left: 8px; }

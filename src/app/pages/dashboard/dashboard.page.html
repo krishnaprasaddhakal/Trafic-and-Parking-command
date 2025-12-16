@@ -1,0 +1,22 @@
+<app-topbar title="Live Traffic & Parking Dashboard"></app-topbar>
+
+<section class="container dashboard">
+  <div class="subtitle">Real-time view of parking occupancy, illegal parking, and camera feeds.</div>
+
+  <div class="grid grid-4">
+    <app-stats-card *ngFor="let s of stats" [icon]="s.icon" [title]="s.title" [value]="s.value" [change]="s.change" />
+  </div>
+
+  <div class="grid grid-3 mt">
+    <app-camera-feed class="col-span-2" [camera]="selected()" [options]="feeds" (select)="select($event)"></app-camera-feed>
+    <app-camera-feed [camera]="feeds[1]" [options]="feeds" (select)="select($event)"></app-camera-feed>
+    <app-camera-sidebar [items]="others"></app-camera-sidebar>
+  </div>
+
+  <div class="grid grid-2 mt">
+    <app-camera-thumbnail [camera]="feeds[0]" (select)="select($event)"></app-camera-thumbnail>
+    <app-camera-thumbnail [camera]="feeds[2]" (select)="select($event)"></app-camera-thumbnail>
+  </div>
+
+  <footer class="footer">© 2025 NGN Traffic & Parking Command | All Rights Reserved</footer>
+</section>

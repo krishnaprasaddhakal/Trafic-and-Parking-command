@@ -1,0 +1,22 @@
+<div class="filter panel">
+  <button class="toggle" (click)="toggleView()">{{ view === 'grid' ? '▦' : '≡' }}</button>
+  <div class="select">
+    <span class="pill">Filter</span>
+  </div>
+  <input [(ngModel)]="search" (ngModelChange)="searchChange.emit($event)" type="text" [placeholder]="'e.g. Plate Number'"/>
+  <div class="summary">
+    <span class="pill">Filter: {{ filterCount }}</span>
+    <a href="#" (click)="$event.preventDefault(); clearAll.emit()">Clear all</a>
+  </div>
+  <div class="month">
+    <select [(ngModel)]="month" (ngModelChange)="monthChange.emit($event)">
+      <option>Jan 2024</option>
+      <option>Feb 2024</option>
+      <option>Mar 2024</option>
+      <option>Apr 2024</option>
+    </select>
+  </div>
+  <div class="range">
+    <app-date-range [start]="startDate" [end]="endDate" (change)="dateRangeChange.emit($event)"></app-date-range>
+  </div>
+</div>

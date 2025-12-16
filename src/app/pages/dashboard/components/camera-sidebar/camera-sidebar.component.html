@@ -1,0 +1,16 @@
+<div class="sidebar panel">
+  <div class="hdr">
+    <div class="title">List of other Camera</div>
+    <a class="view pill" routerLink="/cameras">View All →</a>
+  </div>
+  <div class="list">
+    <div class="row" *ngFor="let c of items">
+      <div class="info">
+        <div class="name">{{ c.id }}</div>
+        <div class="desc">Camera Location: {{ c.location }}</div>
+        <div class="desc">Camera Type: {{ c.type }}</div>
+      </div>
+      <div class="status pill">Active</div>
+    </div>
+  </div>
+</div>

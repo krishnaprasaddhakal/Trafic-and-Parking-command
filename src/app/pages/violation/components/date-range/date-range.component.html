@@ -1,0 +1,5 @@
+<div class="range">
+  <input type="date" [(ngModel)]="start" (ngModelChange)="change.emit({start, end})" />
+  <span>—</span>
+  <input type="date" [(ngModel)]="end" (ngModelChange)="change.emit({start, end})" />
+</div>

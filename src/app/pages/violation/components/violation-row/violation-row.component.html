@@ -1,0 +1,11 @@
+<tr class="row">
+  <td>{{ item.date }}</td>
+  <td>{{ item.camera }}</td>
+  <td><span class="pill type" [class]="statusClass()">{{ item.type }}</span></td>
+  <td>{{ item.plateNumber }}</td>
+  <td>{{ item.vehicleType }}</td>
+  <td>{{ item.duration }}</td>
+  <td class="evidence">
+    <img *ngFor="let e of item.evidence" [src]="e" alt="evidence" (click)="evidenceClick.emit(e)" />
+  </td>
+</tr>

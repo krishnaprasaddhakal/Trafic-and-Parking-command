@@ -1,0 +1,27 @@
+.analytics .subtitle { color: var(--muted); margin-bottom: 12px; }
+.kpis app-stats-card { display: block; }
+.mt { margin-top: 24px; }
+.chart { padding: 16px; box-shadow: var(--shadow-hard); }
+.hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.hdr .title { font-weight: 700; }
+.hdr .sub { color: var(--muted); }
+.hdr .controls { display: inline-flex; align-items: center; gap: 10px; }
+.toggle { background: var(--panel-2); }
+
+.donut {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.donut-wrap { position: relative; width: 240px; height: 240px; }
+.donut-center { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.donut-center .big { font-size: 26px; font-weight: 800; color: var(--text); }
+.legend { display: grid; gap: 10px; }
+.legend .row { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+.legend .row .dot { width: 8px; height: 8px; border-radius: 999px; display: inline-block; }
+.legend .row .pct { margin-left: auto; color: var(--text); }
+
+@media (max-width: 960px) {
+  .donut { grid-template-columns: 1fr; justify-items: center; }
+}

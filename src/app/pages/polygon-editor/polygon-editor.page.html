@@ -1,0 +1,63 @@
+<app-topbar title="Polygon Editor"></app-topbar>
+
+<section class="container">
+  <div class="subtitle">Draw Parking slot and No parking zones per camera</div>
+
+  <div class="controlbar panel">
+    <div class="row">
+      <div class="ctrl">
+        <span class="lbl">Camera:</span>
+        <mat-select [value]="selectedCameraId" (valueChange)="onCameraChange($event)" class="select">
+          <mat-option *ngFor="let c of cameras" [value]="c.id">{{ c.name }}</mat-option>
+        </mat-select>
+      </div>
+      <div class="ctrl">
+        <span class="lbl">ROI Type:</span>
+        <mat-select [value]="selectedRoi" (valueChange)="selectedRoi = $event" class="select">
+          <mat-option *ngFor="let r of roiTypes" [value]="r">{{ r }}</mat-option>
+        </mat-select>
+      </div>
+      <div class="spacer"></div>
+      <button mat-raised-button color="primary" (click)="refreshSnapshot()" [disabled]="loading">
+        <mat-icon fontIcon="refresh" class="material-icons-outlined"></mat-icon>
+        Refresh Camera Snapshot
+      </button>
+      <button mat-raised-button color="accent" (click)="save()" [disabled]="!canSave">
+        <mat-icon fontIcon="save" class="material-icons-outlined"></mat-icon>
+        Save Polygons
+      </button>
+    </div>
+  </div>
+
+  <div class="panel editor">
+    <div class="stage" (click)="onImageClick($event)">
+      <img [src]="snapshot" alt="snapshot" />
+      <svg class="overlay" xmlns="http://www.w3.org/2000/svg" (mousemove)="onMouseMoveOverlay($event)">
+        <polyline
+          [attr.points]="polylinePoints()"
+          [attr.fill]="finished ? (selectedRoi==='Parking Slot'?'rgba(56,189,248,.25)':'rgba(139,92,246,.25)') : 'none'"
+          [attr.stroke]="selectedRoi==='Parking Slot' ? '#38bdf8' : '#8b5cf6'"
+          stroke-width="2" />
+        <circle *ngFor="let p of points; let i = index"
+                [attr.cx]="p.x" [attr.cy]="p.y" r="5"
+                [attr.fill]="selectedRoi==='Parking Slot' ? '#38bdf8' : '#8b5cf6'"
+                (mousedown)="onHandleMouseDown(i, $event)"/>
+        <g *ngFor="let poly of polygons">
+          <polygon [attr.points]="pointsToString(poly.points)"
+                   [attr.fill]="poly.type==='Parking Slot'?'rgba(56,189,248,.20)':'rgba(139,92,246,.20)'"
+                   [attr.stroke]="poly.type==='Parking Slot' ? '#38bdf8' : '#8b5cf6'"
+                   stroke-width="2"></polygon>
+        </g>
+        <text x="12" y="24" fill="#e6e8f2" font-size="12">{{ timestamp }}</text>
+        <text x="92%" y="96%" fill="#e6e8f2" font-size="12">{{ cameraLocation() }}</text>
+      </svg>
+    </div>
+    <div class="toolbar">
+      <button class="pill" (click)="undo()">Undo Points</button>
+      <button class="pill" (click)="clear()">Clear all</button>
+      <button class="save" (click)="finish()" [disabled]="points.length < 3">Finish Polygons</button>
+    </div>
+  </div>
+  <p class="helper">Click on the image to add points. At least 3 points — Finish Polygon. Click existing polygon to edit vertices.</p>
+  <footer class="footer">© 2025 NGN Traffic & Parking Command | All Right Reserved</footer>
+</section>

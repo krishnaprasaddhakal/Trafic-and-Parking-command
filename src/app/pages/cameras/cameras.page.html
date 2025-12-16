@@ -1,0 +1,61 @@
+<app-topbar [title]="headerTitle"></app-topbar>
+
+<section class="container cameras">
+  <div class="subtitle">{{ headerSubtitle }}</div>
+
+  <app-filter-bar
+    [view]="view" [filter]="statusFilter" [search]="search" [filterCount]="filterCount"
+    (viewChange)="onViewChange($event)" (filterChange)="onFilterChange($event)" (searchChange)="onSearchChange($event)"
+    (clearAll)="onClearAll()"/>
+
+  <app-status-tabs
+    [tabs]="tabs" [active]="statusFilter"
+    (change)="onFilterChange($event)"></app-status-tabs>
+
+  <div class="section panel">
+    <div class="hdr">
+      <div>
+        <div class="title">{{ sectionTitle }}</div>
+        <div class="sub">{{ sectionSubtitle }}</div>
+      </div>
+      <button class="add" (click)="addCamera()">{{ addButtonLabel }}</button>
+    </div>
+    <app-camera-grid [items]="filtered"></app-camera-grid>
+  </div>
+
+  <footer class="footer">{{ footerText }}</footer>
+
+  <div class="overlay" *ngIf="addOpen" (click)="closeAdd()">
+    <div class="modal panel" (click)="$event.stopPropagation()">
+      <div class="title">Add Camera</div>
+      <div class="form">
+        <label>
+          <span>Name</span>
+          <input [(ngModel)]="newCamera.name" type="text" placeholder="Camera name"/>
+        </label>
+        <label>
+          <span>Location</span>
+          <input [(ngModel)]="newCamera.location" type="text" placeholder="Camera location"/>
+        </label>
+        <label>
+          <span>Code</span>
+          <input [(ngModel)]="newCamera.code" type="text" placeholder="CAM_1234"/>
+        </label>
+        <label>
+          <span>Status</span>
+          <select [(ngModel)]="newCamera.status">
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>Maintenance</option>
+            <option>Violation</option>
+          </select>
+        </label>
+      </div>
+      <div class="actions">
+        <button class="pill" (click)="closeAdd()">Cancel</button>
+        <button class="pill primary" (click)="saveCamera()">Save</button>
+      </div>
+    </div>
+    <div class="backdrop"></div>
+  </div>
+</section>

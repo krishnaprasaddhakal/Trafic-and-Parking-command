@@ -1,0 +1,6 @@
+<div class="tabs">
+  <a *ngFor="let t of tabs" href="#" class="tab" [class.active]="t.key===active"
+     (click)="$event.preventDefault(); change.emit(t.key)">
+    {{ t.label }}
+  </a>
+</div>

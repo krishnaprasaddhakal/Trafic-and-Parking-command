@@ -1,0 +1,18 @@
+.box { padding: 16px; margin-bottom: 16px; }
+.muted { color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { display: grid; gap: 10px; }
+.card .title { font-weight: 700; }
+.card label { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 10px; }
+.card input, .card select {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 8px 10px;
+}
+.card .actions { display: flex; align-items: center; gap: 10px; }
+.sessions { display: grid; gap: 10px; }
+.sessions .row { display: flex; align-items: center; justify-content: space-between; padding: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel-2); }
+.sessions .row .name { font-weight: 600; }
+.small { font-size: 12px; }

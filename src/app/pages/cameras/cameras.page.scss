@@ -1,0 +1,35 @@
+.mt { margin-top: 24px; }
+.cameras .subtitle { color: var(--muted); margin-bottom: 12px; }
+.section { padding: 16px; box-shadow: var(--shadow-hard); }
+.section .hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.section .hdr .title { font-weight: 700; }
+.section .hdr .sub { color: var(--muted); }
+.section .hdr .add {
+  background: var(--primary);
+  color: white;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.overlay { position: fixed; inset: 0; display: grid; place-items: center; z-index: 50; }
+.backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.35); }
+.modal { position: relative; padding: 16px; width: 560px; max-width: 90vw; box-shadow: var(--shadow-hard); z-index: 51; }
+.modal .title { font-weight: 700; margin-bottom: 12px; }
+.modal .form { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.modal .form label { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 10px; }
+.modal .form input, .modal .form select {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 8px 10px;
+}
+.modal .actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+.pill.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+@media (max-width: 960px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
