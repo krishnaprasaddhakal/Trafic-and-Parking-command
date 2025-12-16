@@ -12,6 +12,10 @@
     <div class="grid">
       <div class="card">
         <div class="title">Profile</div>
+        <div class="avatar">
+          <img [src]="profile.avatar || 'https://avatar.vercel.sh/user'" alt="avatar" />
+          <input type="file" accept="image/*" (change)="onAvatarChange($event)"/>
+        </div>
         <label><span>Name</span><input [(ngModel)]="profile.name" type="text" /></label>
         <label><span>Email</span><input [(ngModel)]="profile.email" type="email" /></label>
         <label><span>Phone</span><input [(ngModel)]="profile.phone" type="tel" /></label>
@@ -34,12 +38,33 @@
       <div class="card">
         <div class="title">Active Sessions</div>
         <div class="sessions">
+          <div class="actions">
+            <button class="pill" (click)="signOutAll()">Sign out of all</button>
+          </div>
           <div class="row" *ngFor="let s of sessions">
             <div class="info">
               <div class="name">{{ s.device }}</div>
               <div class="muted small">{{ s.location }} • {{ s.lastActive }}</div>
             </div>
             <button class="pill" (click)="revokeSession(s.id)">Sign out</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="title">Two-Factor Authentication</div>
+        <div *ngIf="!twofa.enabled">
+          <p class="muted">Add an extra layer of security to your account.</p>
+          <button class="pill" (click)="enableTwofa()">Enable 2FA</button>
+        </div>
+        <div *ngIf="twofa.enabled">
+          <p class="muted">Use the secret to set up your authenticator app.</p>
+          <div class="secret">{{ twofa.secret }}</div>
+          <div class="codes">
+            <div class="code" *ngFor="let c of twofa.codes">{{ c }}</div>
+          </div>
+          <div class="actions">
+            <button class="pill" (click)="confirmTwofa()">{{ twofa.verified ? 'Verified' : 'Confirm setup' }}</button>
+            <button class="pill" (click)="disableTwofa()">Disable 2FA</button>
           </div>
         </div>
       </div>

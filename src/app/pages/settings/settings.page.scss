@@ -4,6 +4,8 @@
 .card { display: grid; gap: 10px; }
 .card .title { font-weight: 700; }
 .card label { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 10px; }
+.card .avatar { display: flex; align-items: center; gap: 12px; }
+.card .avatar img { width: 48px; height: 48px; border-radius: 999px; border: 1px solid var(--border); object-fit: cover; }
 .card input, .card select {
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -16,3 +18,16 @@
 .sessions .row { display: flex; align-items: center; justify-content: space-between; padding: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel-2); }
 .sessions .row .name { font-weight: 600; }
 .small { font-size: 12px; }
+.avatar { display: flex; align-items: center; gap: 12px; }
+.avatar img { width: 48px; height: 48px; border-radius: 999px; border: 1px solid var(--border); object-fit: cover; }
+.secret { border: 1px dashed var(--border); border-radius: 10px; padding: 8px 10px; background: var(--panel-2); word-break: break-all; }
+.codes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 10px 0; }
+.code { text-align: center; border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; background: var(--panel-2); font-weight: 600; letter-spacing: 0.5px; }
+.avatar { display: flex; align-items: center; gap: 12px; }
+.avatar img { width: 48px; height: 48px; border-radius: 999px; object-fit: cover; border: 1px solid var(--border); }
+.codes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.code { padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel-2); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.secret { padding: 8px 10px; border: 1px dashed var(--border); border-radius: 10px; background: var(--panel-2); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.codes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.codes .code { padding: 8px 10px; border: 1px dashed var(--border); border-radius: 8px; text-align: center; background: var(--panel-2); }
+.secret { font-family: monospace; padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel-2); }
